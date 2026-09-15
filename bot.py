@@ -15,7 +15,15 @@ ADMIN_ID = 7154594023  # Осы жерге өз Telegram ID-іңді жаз
 BLOOD_GROUPS = ["I (+)", "I (-)", "II (+)", "II (-)", "III (+)", "III (-)", "IV (+)", "IV (-)"]
 DISTRICTS = ["Центр", "Заводской", "12-15 мкр", "Баласағұн", "Алатау", "Басқа аудан"]
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['alert'])
+def alert_donors(message):
+    # Егер жазған адам Админ тізімінде болмаса:
+    if message.chat.id not in ADMIN_IDS:
+        bot.send_message(message.chat.id, "Бұл команда тек Қызыл Жарты Ай қызметкерлеріне арналған.")
+        return
+    
+    msg = bot.send_message(message.chat.id, "Шұғыл хабарландыру мәтінін жазыңыз (мысалы: Тараз ауруханасына II (+) қан тобы шұғыл қажет!):")
+    bot.register_next_step_handler(msg, broadcast_alert)
 def start_command(message):
     user_id = message.chat.id
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
