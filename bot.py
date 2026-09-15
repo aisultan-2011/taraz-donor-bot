@@ -16,14 +16,14 @@ def run_flask():
     app.run(host='0.0.0.0', port=port)
 
 # 2. Telegram Бот бөлімі
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = "8860137675:AAEvUr19qcy4ThrZswBIiAZoLi7MLC3V8LQ"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Әкімшілердің Telegram ID-лері (Өзің мен әпкеңдікін сандармен жаз)
 ADMIN_IDS = [7154594023]  # Осы жерге өз ID-леріңді үтір арқылы жазыңдар
 
 BLOOD_GROUPS = ["I (+)", "I (-)", "II (+)", "II (-)", "III (+)", "III (-)", "IV (+)", "IV (-)"]
-DISTRICTS = ["Центр", "Заводской", "12-15 мкр", "Баласағұн", "Алатау", "Басқа аудан"]
+DISTRICTS = ["Центр", "Сах. Завод", "12-15 мкр", "Баласағұн", "Алатау", "Басқа аудан,"]
 
 donors_db = {}
 user_states = {}
